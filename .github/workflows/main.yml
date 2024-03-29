@@ -9,8 +9,10 @@ on:
 
 jobs:
  experimental-great:
-  runs-on: ubuntu-latest
-  steps:
+   env:
+     MY_ENV: "John Doe"
+   runs-on: ubuntu-latest
+   steps:
     - name: Greet the User
       run: echo "Hello World!"
     - name: Show directory before checkout
@@ -19,3 +21,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Show directory after checkout
       run: ls -l
+    - name: Show env vars
+      run:
+        echo "Hello $MY_ENV"
+        echo "Hello $GITHUB_ACTOR"
